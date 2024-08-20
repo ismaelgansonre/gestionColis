@@ -39,29 +39,30 @@
       </thead>
       <tbody>
         <tr *ngFor="let colis of getPaginatedData()" class="border-b">
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ colis.id }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.date_enregistrement }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.nom_prenom_employe }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numero_talon_mco }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numero_lta }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.nom_nature_produit }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.poids_produit }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.date_envoi }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.date_estimee_arrivee }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.depart_arrivee }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.cout_transport }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.nom_proprietaire }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numero_cnib_passport }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numero_telephone_1 }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numero_telephone_2 }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.email }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.status_colis }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-            <button
-              class="text-indigo-600 hover:text-indigo-900"
-              (click)="editColis(colis)">Modifier</button>
-          </td>
-        </tr>
+  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ colis.id }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.dateEnregistrement }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ getFullNameEmploye(colis) }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numeroTalonMco }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numeroLta }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.nomNatureProduit }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.poidsProduit }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.dateEnvoi }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.dateEstimeeArrivee }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.departArrivee }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.coutTransport }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ getFullNameProprietaire(colis) }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numeroCnibPassport }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numeroTelephone1 }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.numeroTelephone2 }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.email }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ colis.statusColis }}</td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+    <button class="text-indigo-600 hover:text-indigo-900" (click)="editColis(colis)">
+      Modifier
+    </button>
+  </td>
+</tr>
+
       </tbody>
     </table>
   </div>

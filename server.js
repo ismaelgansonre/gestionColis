@@ -4,12 +4,13 @@ const cors = require("cors");
 const mysql = require("mysql2");
 
 const app = express();
-app.use(
-  cors({
-    origin: ["localhost:4200"], // Remplacez par votre domaine
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+const corsOptions = {
+  origin: "http://localhost:4200",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
+
 app.use(express.json()); // Remplace bodyParser qui est maintenant inclus dans Express
 
 const db = mysql.createConnection({

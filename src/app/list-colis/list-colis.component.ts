@@ -4,6 +4,7 @@ import { ColisService } from '../services/colis.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderStatsComponent } from '../header-stats/header-stats.component';
 import { CommonModule } from '@angular/common';
+import { Colis } from '../model/Colis';
 
 @Component({
   selector: 'app-list-colis',
@@ -14,16 +15,16 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./list-colis.component.css'],
 })
 export class ListColisComponent implements OnInit {
-  colisList: any[] = [];
+  colisList: Colis[] = [];
   filteredColisList: any[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 10;
-  totalPages!: number ;
+  totalPages!: number;
 
   // Statistiques
-  totalColis!: number ;
-  colisLivres!: number ;
-  colisRetards!: number ;
+  totalColis!: number;
+  colisLivres!: number;
+  colisRetards!: number;
 
   constructor(private colisService: ColisService, private router: Router) {}
 
@@ -43,18 +44,18 @@ export class ListColisComponent implements OnInit {
         // Calculer les statistiques
         this.totalColis = this.colisList.length;
         this.colisLivres = this.colisList.filter(
-          (colis) => colis.status_livre === 'LIVRÉ'
+          (colis) => colis.statusColis === 'LIVRÉ'
         ).length;
         console.error(this.colisLivres);
         this.colisList.forEach((colis) => {
-          console.log('Status:', colis.status_livre);
+          console.log('Status:', colis.statusColis);
         });
         this.colisRetards = this.colisList.filter((colis) => {
           // Exemple de calcul pour les colis en retard
-          const dateEstimeeArrivee = new Date(colis.date_estimee_arrivee);
+          const dateEstimeeArrivee = new Date(colis.dateEstimeeArrivee);
           const dateActuelle = new Date();
           return (
-            dateEstimeeArrivee < dateActuelle && colis.status_livre !== 'LIVRÉ'
+            dateEstimeeArrivee < dateActuelle && colis.statusColis !== 'LIVRÉ'
           );
         }).length;
       },
@@ -63,7 +64,13 @@ export class ListColisComponent implements OnInit {
       }
     );
   }
+  getFullNameEmploye(colis: Colis): string {
+    return `${colis.nomEmploye} ${colis.prenomEmploye}`;
+  }
 
+  getFullNameProprietaire(colis: Colis): string {
+    return `${colis.nomProprietaire} ${colis.prenomProprietaire}`;
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value
       .trim()
