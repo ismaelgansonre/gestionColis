@@ -9,17 +9,21 @@ import { HeaderStatsComponent } from "../header-stats/header-stats.component";
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule, CardStatsComponent, HeaderStatsComponent], // Ajoutez les imports ici
+  imports: [
+    CommonModule,
+    RouterModule,
+    CardStatsComponent,
+    HeaderStatsComponent,
+  ], // Ajoutez les imports ici
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css',
 })
 export class MenuComponent implements OnInit {
-
   collapseShow = 'hidden';
   constructor() {}
 
   ngOnInit() {}
-  toggleCollapseShow(classes: string) {
-    this.collapseShow = classes;
+  toggleCollapseShow() {
+    this.collapseShow = this.collapseShow === 'hidden' ? 'block' : 'hidden';
   }
 }

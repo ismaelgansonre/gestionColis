@@ -1,1 +1,267 @@
-<p>add-colis works!</p>
+<div class="min-h-screen flex items-center justify-center bg-stone-100 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 p-10 bg-white shadow rounded-lg">
+    <div>
+      <h1 class="text-center text-3xl font-extrabold text-gray-900">Formulaire de Colis</h1>
+      <p class="mt-2 text-center text-sm text-gray-600">Veuillez remplir les informations du colis ci-dessous</p>
+    </div>
+    <form [formGroup]="colisForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <!-- Date d'enregistrement -->
+      <div>
+        <label for="dateEnregistrement" class="block text-sm font-medium text-gray-700">Date d'enregistrement</label>
+        <input
+          id="dateEnregistrement"
+          type="date"
+          formControlName="dateEnregistrement"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('dateEnregistrement')?.invalid && colisForm.get('dateEnregistrement')?.touched" class="text-red-600 text-sm">
+          Date d'enregistrement est requise.
+        </div>
+      </div>
+
+      <!-- Nom Prénom employé -->
+      <div>
+        <label for="nomPrenomEmploye" class="block text-sm font-medium text-gray-700">Nom Prénom employé</label>
+        <input
+          id="nomPrenomEmploye"
+          type="text"
+          formControlName="nomPrenomEmploye"
+          placeholder="Nom Prénom employé"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('nomPrenomEmploye')?.invalid && colisForm.get('nomPrenomEmploye')?.touched" class="text-red-600 text-sm">
+          Le nom complet de l'employé est requis.
+        </div>
+      </div>
+
+      <!-- Numéro TALON / MCO -->
+      <div>
+        <label for="numeroTalonMco" class="block text-sm font-medium text-gray-700">Numéro TALON / MCO</label>
+        <input
+          id="numeroTalonMco"
+          type="text"
+          formControlName="numeroTalonMco"
+          placeholder="Numéro TALON / MCO"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('numeroTalonMco')?.invalid && colisForm.get('numeroTalonMco')?.touched" class="text-red-600 text-sm">
+          Numéro TALON / MCO est requis.
+        </div>
+      </div>
+
+      <!-- Numéro LTA -->
+      <div>
+        <label for="numeroLta" class="block text-sm font-medium text-gray-700">Numéro LTA</label>
+        <input
+          id="numeroLta"
+          type="text"
+          formControlName="numeroLta"
+          placeholder="Numéro LTA"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('numeroLta')?.invalid && colisForm.get('numeroLta')?.touched" class="text-red-600 text-sm">
+          Numéro LTA est requis.
+        </div>
+      </div>
+
+      <!-- Nom / Nature du produit -->
+      <div>
+        <label for="nomNatureProduit" class="block text-sm font-medium text-gray-700">Nom / Nature du produit</label>
+        <input
+          id="nomNatureProduit"
+          type="text"
+          formControlName="nomNatureProduit"
+          placeholder="Nom / Nature du produit"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('nomNatureProduit')?.invalid && colisForm.get('nomNatureProduit')?.touched" class="text-red-600 text-sm">
+          Nom / Nature du produit est requis.
+        </div>
+      </div>
+
+      <!-- Poids du produit -->
+      <div>
+        <label for="poidsProduit" class="block text-sm font-medium text-gray-700">Poids du produit (kg)</label>
+        <input
+          id="poidsProduit"
+          type="number"
+          step="0.01"
+          formControlName="poidsProduit"
+          placeholder="Poids du produit"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('poidsProduit')?.invalid && colisForm.get('poidsProduit')?.touched" class="text-red-600 text-sm">
+          Poids du produit est requis et doit être supérieur à 0.
+        </div>
+      </div>
+
+      <!-- Coût du transport -->
+      <div>
+        <label for="coutTransport" class="block text-sm font-medium text-gray-700">Coût du transport (frs CFA)</label>
+        <input
+          id="coutTransport"
+          type="number"
+          formControlName="coutTransport"
+          placeholder="Coût du transport"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('coutTransport')?.invalid && colisForm.get('coutTransport')?.touched" class="text-red-600 text-sm">
+          Le coût du transport est requis.
+        </div>
+      </div>
+
+      <!-- Date d'envoi -->
+      <div>
+        <label for="dateEnvoi" class="block text-sm font-medium text-gray-700">Date d'envoi</label>
+        <input
+          id="dateEnvoi"
+          type="date"
+          formControlName="dateEnvoi"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('dateEnvoi')?.invalid && colisForm.get('dateEnvoi')?.touched" class="text-red-600 text-sm">
+          Date d'envoi est requise.
+        </div>
+      </div>
+
+      <!-- Date estimée d'arrivée -->
+      <div>
+        <label for="dateEstimeeArrivee" class="block text-sm font-medium text-gray-700">Date estimée d'arrivée</label>
+        <input
+          id="dateEstimeeArrivee"
+          type="date"
+          formControlName="dateEstimeeArrivee"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('dateEstimeeArrivee')?.invalid && colisForm.get('dateEstimeeArrivee')?.touched" class="text-red-600 text-sm">
+          Date estimée d'arrivée est requise.
+        </div>
+      </div>
+
+      <!-- Départ – Arrivée -->
+      <div>
+        <label for="departArrivee" class="block text-sm font-medium text-gray-700">Départ – Arrivée</label>
+        <select
+          id="departArrivee"
+          formControlName="departArrivee"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          <option value="Chine-Burkina">Chine-Burkina</option>
+          <option value="Chine-Cote d'ivoire">Chine-Cote d'ivoire</option>
+          <option value="Chine-Mali">Chine-Mali</option>
+          <option value="Chine-Niger">Chine-Niger</option>
+        </select>
+        <div *ngIf="colisForm.get('departArrivee')?.invalid && colisForm.get('departArrivee')?.touched" class="text-red-600 text-sm">
+          Départ – Arrivée est requis.
+        </div>
+      </div>
+
+      <!-- Nom du propriétaire -->
+      <div>
+        <label for="nomProprietaire" class="block text-sm font-medium text-gray-700">Nom du propriétaire</label>
+        <input
+          id="nomProprietaire"
+          type="text"
+          formControlName="nomProprietaire"
+          placeholder="Nom du propriétaire"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('nomProprietaire')?.invalid && colisForm.get('nomProprietaire')?.touched" class="text-red-600 text-sm">
+          Nom du propriétaire est requis.
+        </div>
+      </div>
+
+      <!-- Numéro CNIB / PASSPORT -->
+      <div>
+        <label for="numeroCnibPassport" class="block text-sm font-medium text-gray-700">Numéro CNIB / PASSPORT</label>
+        <input
+          id="numeroCnibPassport"
+          type="text"
+          formControlName="numeroCnibPassport"
+          placeholder="Numéro CNIB / PASSPORT"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('numeroCnibPassport')?.invalid && colisForm.get('numeroCnibPassport')?.touched" class="text-red-600 text-sm">
+          Numéro CNIB / PASSPORT est requis.
+        </div>
+      </div>
+
+      <!-- Numéro de téléphone 1 -->
+      <div>
+        <label for="numeroTelephone1" class="block text-sm font-medium text-gray-700">Numéro de téléphone 1</label>
+        <input
+          id="numeroTelephone1"
+          type="text"
+          formControlName="numeroTelephone1"
+          placeholder="Numéro de téléphone 1"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('numeroTelephone1')?.invalid && colisForm.get('numeroTelephone1')?.touched" class="text-red-600 text-sm">
+          Numéro de téléphone 1 est requis.
+        </div>
+      </div>
+
+      <!-- Numéro de téléphone 2 -->
+      <div>
+        <label for="numeroTelephone2" class="block text-sm font-medium text-gray-700">Numéro de téléphone 2</label>
+        <input
+          id="numeroTelephone2"
+          type="text"
+          formControlName="numeroTelephone2"
+          placeholder="Numéro de téléphone 2"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('numeroTelephone2')?.invalid && colisForm.get('numeroTelephone2')?.touched" class="text-red-600 text-sm">
+          Numéro de téléphone 2 est optionnel.
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div *ngIf="colisForm.get('email')?.invalid && colisForm.get('email')?.touched" class="text-red-600 text-sm">
+          Email est requis et doit être valide.
+        </div>
+      </div>
+
+      <!-- Status du colis -->
+      <div>
+        <label for="statusColis" class="block text-sm font-medium text-gray-700">Status du colis</label>
+        <select
+          id="statusColis"
+          formControlName="statusColis"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          <option value="NON LIVRÉ">NON LIVRÉ</option>
+          <option value="LIVRÉ">LIVRÉ</option>
+        </select>
+        <div *ngIf="colisForm.get('statusColis')?.invalid && colisForm.get('statusColis')?.touched" class="text-red-600 text-sm">
+          Status du colis est requis.
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="mt-6 flex gap-6">
+        <button
+          type="submit"
+          class="w-full rounded-full bg-orange-300 py-4 px-10 font-bold text-white shadow hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+        >
+          Envoyer
+        </button>
+        <button
+          type="reset"
+          class="w-full rounded-full bg-transparent py-4 px-10 font-bold text-stone-400 border border-stone-200 hover:border-orange-300 hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+        >
+          Réinitialiser
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
