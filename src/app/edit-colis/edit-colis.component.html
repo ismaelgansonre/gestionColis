@@ -1,1 +1,118 @@
-<p>edit-colis works!</p>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <form [formGroup]="colisForm" (ngSubmit)="saveChanges()">
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label for="dateEnregistrement" class="block text-sm font-medium text-gray-700">Date d'enregistrement</label>
+          <input
+            id="dateEnregistrement"
+            type="text"
+            formControlName="dateEnregistrement"
+            class="border border-gray-300 p-2 rounded w-full"
+            readonly
+          />
+        </div>
+        <div>
+          <label for="numeroTalonMco" class="block text-sm font-medium text-gray-700">Numéro TALON / MCO</label>
+          <input
+            id="numeroTalonMco"
+            type="text"
+            formControlName="numeroTalonMco"
+            class="border border-gray-300 p-2 rounded w-full"
+            readonly
+          />
+        </div>
+        <div>
+          <label for="numeroLta" class="block text-sm font-medium text-gray-700">Numéro LTA</label>
+          <input
+            id="numeroLta"
+            type="text"
+            formControlName="numeroLta"
+            class="border border-gray-300 p-2 rounded w-full"
+            readonly
+          />
+        </div>
+        <div>
+          <label for="nomNatureProduit" class="block text-sm font-medium text-gray-700">Nom / Nature du produit</label>
+          <input
+            id="nomNatureProduit"
+            type="text"
+            formControlName="nomNatureProduit"
+            class="border border-gray-300 p-2 rounded w-full"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label for="dateEnvoi" class="block text-sm font-medium text-gray-700">Date d'envoi</label>
+          <input
+            id="dateEnvoi"
+            type="date"
+            formControlName="dateEnvoi"
+            class="border border-gray-300 p-2 rounded w-full"
+            readonly
+          />
+        </div>
+        <div>
+          <label for="dateEstimeeArrivee" class="block text-sm font-medium text-gray-700">Date estimée d'arrivée</label>
+          <input
+            id="dateEstimeeArrivee"
+            type="date"
+            formControlName="dateEstimeeArrivee"
+            class="border border-gray-300 p-2 rounded w-full"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="departArrivee" class="block text-sm font-medium text-gray-700">Départ – Arrivée</label>
+        <input
+          id="departArrivee"
+          type="text"
+          formControlName="departArrivee"
+          class="border border-gray-300 p-2 rounded w-full"
+          readonly
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="nomProprietaire" class="block text-sm font-medium text-gray-700">Nom du propriétaire</label>
+        <input
+          id="nomProprietaire"
+          type="text"
+          formControlName="nomProprietaire"
+          class="border border-gray-300 p-2 rounded w-full"
+          readonly
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="numeroTelephone1" class="block text-sm font-medium text-gray-700">Numéro de téléphone 1</label>
+        <input
+          id="numeroTelephone1"
+          type="text"
+          formControlName="numeroTelephone1"
+          class="border border-gray-300 p-2 rounded w-full"
+          readonly
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="statusColis" class="block text-sm font-medium text-gray-700">Statut de livraison</label>
+        <select
+          id="statusColis"
+          formControlName="statusColis"
+          class="border border-gray-300 p-2 rounded w-full"
+        >
+          <option value="LIVRÉ">LIVRÉ</option>
+          <option value="NON LIVRÉ">NON LIVRÉ</option>
+        </select>
+      </div>
+
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">Sauvegarder</button>
+    </form>
+  </div>
+</body>

@@ -34,7 +34,7 @@ export class ListColisComponent implements OnInit {
 
   loadColis() {
     this.colisService.getColisList().subscribe(
-      (data) => {
+      (data:Colis[]) => {
         this.colisList = data;
         this.filteredColisList = this.colisList;
         this.totalPages = Math.ceil(
